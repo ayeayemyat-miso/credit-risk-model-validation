@@ -1,0 +1,40 @@
+﻿# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Secrets and local settings
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+
+# Editors and temporary files
+.vscode/
+.idea/
+*.log
+*.tmp
+.ipynb_checkpoints/
+
+# Raw and intermediate data
+data/raw/
+data/processed/
+
+# Keep the data folder structure
+!data/processed/.gitkeep
+
+# Dashboard-required processed data
+!data/processed/
+data/processed/*
+!data/processed/pd_scores.parquet
+!data/processed/lgd_scores.parquet
+!data/processed/staging.parquet
+!data/processed/ecl_results.parquet
+!data/processed/rwa_results.parquet

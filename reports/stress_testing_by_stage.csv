@@ -1,0 +1,9 @@
+scenario,synthetic_stage,loan_count,ecl_total,change_vs_baseline,pct_change_vs_baseline
+Baseline,Synthetic Stage 1,1275,526365.451435,0.000000,0.000000
+Baseline,Synthetic Stage 2,514,758991.801610,0.000000,0.000000
+PD stress,Synthetic Stage 1,1275,657599.025477,131233.574042,24.932027
+PD stress,Synthetic Stage 2,514,948739.752013,189747.950403,25.000000
+LGD stress,Synthetic Stage 1,1275,589501.837015,63136.385580,11.994781
+LGD stress,Synthetic Stage 2,514,850031.209512,91039.407902,11.994781
+Combined adverse,Synthetic Stage 1,1275,878831.355084,352465.903649,66.962203
+Combined adverse,Synthetic Stage 2,514,1275046.814268,516055.012658,67.992172

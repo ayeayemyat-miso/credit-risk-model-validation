@@ -1,0 +1,58 @@
+section,metric,value,notes
+Missingness,pd_12m,0,0.0000%; complete in PD universe.
+Missingness,pd_lifetime,0,0.0000%; complete in PD universe.
+Missingness,is_event,0,0.0000%; complete in PD universe.
+Missingness,obs_end,0,0.0000%; complete in PD universe.
+Missingness,event_month,55615,83.3958%; event month is not assigned to non-Charged-Off loans.
+Missingness,lgd_predicted,0,0.0000%; complete in PD universe.
+Missingness,lgd_realised,56356,84.5070%; expected for non-Charged-Off loans and excluded proxy targets.
+Missingness,out_prncp,0,0.0000%; complete in PD universe.
+Missingness,int_rate,0,0.0000%; complete in PD universe.
+Data integrity,PD universe loans,66688,Authoritative ID universe.
+Data integrity,unique PD IDs,66688,All loan-level joins are one-to-one.
+Data integrity,train/test counts,"{'test': 35228, 'train': 31460}","Expected 31,460 train and 35,228 out-of-time test."
+Data integrity,status counts,"{'Fully Paid': 53826, 'Charged Off': 11073, 'Current': 1789}","Fully Paid, Charged Off, and Current."
+Data integrity,issue-year cohorts,"train=[2011.0, 2012.0, 2013.0]; test=[2014.0]",2014 is the out-of-time test vintage.
+PD endpoint,event/obs_end reconstruction,passed,"Six-month charge-off lag; fully-paid/current censoring, snapshot, and term caps reproduced."
+PD 12-month test,eligible_test_loans,30827,Out-of-time eligible test subset only; complete-follow-up selection applies.
+PD 12-month test,events,614,Out-of-time eligible test subset only; complete-follow-up selection applies.
+PD 12-month test,non_events,30213,Out-of-time eligible test subset only; complete-follow-up selection applies.
+PD 12-month test,excluded_test_loans,4401,Out-of-time eligible test subset only; complete-follow-up selection applies.
+PD 12-month test,auc,0.6870669387414504,Out-of-time eligible test subset only; complete-follow-up selection applies.
+PD 12-month test,gini,0.37413387748290083,Out-of-time eligible test subset only; complete-follow-up selection applies.
+PD 12-month test,ks,0.2892673203749577,Out-of-time eligible test subset only; complete-follow-up selection applies.
+PD 12-month test,ks_threshold,0.024587537511167525,Out-of-time eligible test subset only; complete-follow-up selection applies.
+PD 12-month test,brier,0.019470565854075382,Out-of-time eligible test subset only; complete-follow-up selection applies.
+PD 12-month test,mean_predicted_pd,0.022699589883320284,Out-of-time eligible test subset only; complete-follow-up selection applies.
+PD 12-month test,observed_event_rate,0.019917604697181044,Out-of-time eligible test subset only; complete-follow-up selection applies.
+PD 12-month test,expected_events,699.7602573331144,Out-of-time eligible test subset only; complete-follow-up selection applies.
+PD 12-month test,observed_expected_ratio,0.8774433723058824,Out-of-time eligible test subset only; complete-follow-up selection applies.
+Lifetime PD test 36m,eligibility,10456,events=3038; non_events=7418; excluded=13913.
+Lifetime PD test 36m,ROC-AUC,0.668176717629537,computed
+Lifetime PD test 60m,eligibility,2724,events=2724; non_events=0; excluded=8135.
+Lifetime PD test 60m,ROC-AUC,unavailable,unavailable: single class
+LGD target,charged-off target exclusions,741,Invalid/zero EAD or invalid recoveries/fees in the scheduled-balance proxy.
+LGD target,raw LGD below zero clipped,156,"Reconstructed from recoveries, fees, and the existing LGD EAD proxy."
+LGD target,raw LGD above one clipped,0,"Reconstructed from recoveries, fees, and the existing LGD EAD proxy."
+LGD test,n,5776,Test Charged Off loans with valid clipped realized targets only.
+LGD test,mean_realised,0.8434439263061305,Test Charged Off loans with valid clipped realized targets only.
+LGD test,mean_predicted,0.833695889619254,Test Charged Off loans with valid clipped realized targets only.
+LGD test,bias,-0.009748036686876469,Test Charged Off loans with valid clipped realized targets only.
+LGD test,mae,0.11062744815449933,Test Charged Off loans with valid clipped realized targets only.
+LGD test,rmse,0.17518038000265168,Test Charged Off loans with valid clipped realized targets only.
+LGD test,r2,-0.003106062834771217,Test Charged Off loans with valid clipped realized targets only.
+LGD test,exact_one_share,0.2517313019390582,Test Charged Off loans with valid clipped realized targets only.
+LGD test,model interpretation,constant training-mean baseline,Not a differentiated or regulatory downturn LGD model.
+PD reconstruction,maximum 12m absolute error,8.326672684688674e-17,Monthly hazards converted to marginal PD with survival.
+PD reconstruction,maximum lifetime absolute error,4.440892098500626e-16,Monthly hazards converted to marginal PD with survival.
+ECL,arithmetic checks,passed,"PD reconstruction, nonnegative values, 12m <= lifetime, selected ECL only for Current synthetic stages."
+RWA,Current exposure/RWA arithmetic,4413625.59,"Hypothetical 100% weight; arithmetic check only, not regulatory validation."
+RWA,Current included / zero balance,1789 / 36,RWA output is an illustrative hypothetical 100% risk-weight proxy only.
+Limitations,loan selection,15% deterministic sample stratified by status/term/year/split,May affect representativeness; no population weighting applied.
+Limitations,PD endpoint,incomplete follow-up and early payoff,Eligible test metrics condition on complete 12-month follow-up; not IPCW/competing-risk estimates.
+Limitations,default timing,last payment + six months,"Proxy charge-off date, not verified default date."
+Limitations,PD basis,origination-based estimates,Not reporting-date PDs or regulatory long-run average PDs.
+Limitations,LGD basis,"historical recovery target, constant train-mean prediction",741 target exclusions; 156 below-zero raw targets clipped.
+Limitations,EAD basis,contractual amortization schedule,Not observed or regulatory EAD backtesting.
+Limitations,ECL basis,synthetic stages and contractual-rate discount proxy,Mathematical checks only; not empirical validation of IFRS 9 allowances.
+Limitations,RWA basis,hypothetical Current exposure x assumed weight,Not Basel/CRR regulatory capital validation.
